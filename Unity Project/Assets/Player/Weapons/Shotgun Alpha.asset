@@ -1,0 +1,31 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ab1faab74b984574fa508c95cb241124, type: 3}
+  m_Name: Shotgun Alpha
+  m_EditorClassIdentifier: 
+  damageFunction: {fileID: 11400000, guid: b30f298f815b5874aa371e22ec8759dc, type: 2}
+  damage: 1
+  fullAuto: 1
+  type: 2
+  rightPrefab: {fileID: 8679267395196429257, guid: 395706f3580d5a04d9abaf85e3fba015,
+    type: 3}
+  leftPrefab: {fileID: 7468359434173293429, guid: bbb0613a51f80e84c853a4261e730b5d,
+    type: 3}
+  recoilDuration: 0.1
+  recoilStrength: 100
+  recoilAngle: 5
+  spreadAngle: 10
+  spreadRecoilMultiplier: 0
+  ammoNameKey: ammoShotgun
+  ammoPerShot: 1
+  magazineSize: 9
+  bulletsPerReload: 3

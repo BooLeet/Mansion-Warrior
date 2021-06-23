@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c4dd444c67775e64dac7d5f79e1078e0, type: 3}
+  m_Name: EndlessSet
+  m_EditorClassIdentifier: 
+  setName: endless
+  objects:
+  - {fileID: 5706575045952555273, guid: bee7a0600f379894189ff0d9e239bfbd, type: 3}
+  - {fileID: 6292207695081675912, guid: d0a186f1cf44f2f498e8f0d5e33eb183, type: 3}
+  - {fileID: 8664894026106915469, guid: ba63abbd4f913f1498bba376c56d2a96, type: 3}
+  - {fileID: 1498107572271195496, guid: 160ea31d903fe0948959af19d3224df4, type: 3}
+  - {fileID: 8324375544866237170, guid: 3efa302b11b4a3c48ad3ab73c226ca8e, type: 3}
+  - {fileID: 8691315812349591882, guid: 3f3d0e732c313244980f527d9d99dfd8, type: 3}

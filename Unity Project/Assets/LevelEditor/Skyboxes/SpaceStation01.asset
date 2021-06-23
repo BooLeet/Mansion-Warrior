@@ -1,0 +1,26 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c68ebcff6bc833f43823654754953b57, type: 3}
+  m_Name: SpaceStation01
+  m_EditorClassIdentifier: 
+  skyboxObject: {fileID: 8223912337815844654, guid: 06dfe127d0c83dd4cbf97b406566e9f8,
+    type: 3}
+  skyboxMaterial: {fileID: 2100000, guid: dc8ccf650816cd1428101e09dfc8e174, type: 2}
+  skyColor: {r: 0, g: 0, b: 0, a: 1}
+  equatorColor: {r: 0, g: 0, b: 0, a: 1}
+  groundColor: {r: 0, g: 0, b: 0, a: 1}
+  singleColor: 1
+  fullColor: {r: 0.75686276, g: 0.40784314, b: 0.34901962, a: 1}
+  fog: 1
+  fogColor: {r: 0.9372549, g: 0.30367124, b: 0, a: 1}
+  fogStart: 10
+  fogEnd: 100

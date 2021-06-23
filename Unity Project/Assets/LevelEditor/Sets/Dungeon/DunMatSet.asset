@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 20e6ee5bc3a6dea43b5ff437b210c58a, type: 3}
+  m_Name: DunMatSet
+  m_EditorClassIdentifier: 
+  setName: dungeon
+  materials:
+  - {fileID: 2100000, guid: 766316675b28aed488ec42a5cde815c0, type: 2}
+  - {fileID: 2100000, guid: 3901d151953f7e24da53fd451f4d3348, type: 2}
+  - {fileID: 2100000, guid: bb12cbb61b9c28747b7819173cd8dfd6, type: 2}
+  - {fileID: 2100000, guid: 446a62b645683064fb6532ab363e2560, type: 2}
+  - {fileID: 2100000, guid: 292b519855176584e810073b9431b1c9, type: 2}
+  - {fileID: 2100000, guid: 3a3dc813eef3f3e418dd5344d9b3b1aa, type: 2}

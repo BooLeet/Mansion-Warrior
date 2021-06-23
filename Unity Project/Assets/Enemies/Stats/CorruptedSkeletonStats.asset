@@ -1,0 +1,36 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 697e76bc6bfa9ee4fb2fa33c090bd752, type: 3}
+  m_Name: CorruptedSkeletonStats
+  m_EditorClassIdentifier: 
+  maxHealth: 20
+  selfDamageMultiplier: 1
+  moveSpeed: 10
+  jumpVelocity: 10
+  gravityModifier: 3
+  damageFunction: {fileID: 11400000, guid: 708fa20603a8fa549814289851e7331f, type: 2}
+  attackTokenType: 1
+  attackDamage: 20
+  attackDistance: 80
+  attackTokenCooldownTime: 1.2
+  attacksPerToken: 1
+  alwaysAlert: 1
+  visibleLayers:
+    serializedVersion: 2
+    m_Bits: 36663
+  alarmDelay: 0
+  visibilityDistance: 100
+  visibilityAngle: 180
+  cantFindTimeThreshold: 60
+  loot:
+  - {fileID: 258508655295086924, guid: dcc111cb5cfc6f9438c20df7d547c21d, type: 3}
+  lootDropChance: 0.2
