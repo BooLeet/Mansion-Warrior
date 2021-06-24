@@ -8,6 +8,7 @@ public class AIStats : CharacterStats
 {
     [Header("Attack")]
     public DamageFunction damageFunction;
+    public bool useAttackTokens = true;
     public AIDirector.TokenType attackTokenType;
     public float attackDamage = 10;
 
@@ -33,6 +34,9 @@ public class AIStats : CharacterStats
     public GameObject[] loot;
     [Range(0,1)]
     public float lootDropChance = 0.5f;
+
+    [Header("PTS")]
+    public int PTSSurvival;
 
     public GameObject GetRandomLoot()
     {

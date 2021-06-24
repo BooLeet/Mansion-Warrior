@@ -1,9 +1,13 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class GameModeSurvival : GameMode
 {
+    public GameObject gameOverMenu;
+    public Text gameOverText;
+    public GameObject hudElement;
     public AIDirector AIDirector;
     public GameObject regularEnemyPrefab;
     public GameObject mediumEnemyPrefab;
@@ -36,14 +40,26 @@ public class GameModeSurvival : GameMode
     [Space]
     public float enemySpawnStartDistance = 8;
     public float enemySpawnEndDistance = 50;
+    public float enemySpawnvisibilityCheckAngle = 100;
+
+    [Header("PTS")]
+    public int PTSMultiplierMaxStage = 5;
+    public float PTSMultiplierDecayDelay = 3;
+    public float PTSMultiplierDecaySpeed = 25;
+    public float PTSMultiplierPerStage = 500;
+
+    public int PTSMultiplier { get { return (int)(Mathf.Pow(2, Mathf.Clamp((int)(PTSMultiplierMeter / PTSMultiplierPerStage), 0, PTSMultiplierMaxStage))); } }
+    public float PTSMultiplierMeter { get; private set; }
+    private float PTSMultiplierDecayTimer = 0;
 
     // Counters
     public float TimeCounter { get; private set; }
     public int PTS { get; private set; }
-    public float PTSMultiplier { get; private set; }
+    
 
     private void Start()
     {
+        gameOverMenu.SetActive(false);
         player = PlayerCharacter.Instance;
         CurrentSpawnCooldown = 2;
         currentState = new SurvivalFSM.SurvivalPauseBeforeWave();
@@ -65,6 +81,8 @@ public class GameModeSurvival : GameMode
             currentState = nextState;
             currentState.Init(this);
         }
+
+        PTSMultiplierUpdate();
     }
 
     public override bool SpawnEnemy(Vector3 position)
@@ -77,7 +95,7 @@ public class GameModeSurvival : GameMode
         counterStarted = true;
     }
 
-    public GameObject GetEnemyToSpawn(Vector3 position, out float cooldown)
+    public GameObject GetEnemyToSpawn(GameObject spawner, out float cooldown)
     {
         cooldown = 0;
         if (player == null || !counterStarted)
@@ -85,11 +103,7 @@ public class GameModeSurvival : GameMode
         if (AIDirector.GetAICount() >= GetCurrentEnemyCount())
             return null;
 
-        float distance = Vector3.Distance(position, PlayerCharacter.Instance.Position);
-        if (distance > enemySpawnEndDistance || distance < enemySpawnStartDistance)
-            return null;
-
-        if (Utility.WithinAngle(player.head.position, player.head.forward, position, 90) && Utility.IsVisible(position + Vector3.up, PlayerCharacter.Instance.gameObject, enemySpawnEndDistance, PlayerCharacter.Instance.verticalTargetingOffset, enemySpawnCheckMask))
+        if (!SpawnerIsValid(spawner))
             return null;
 
         cooldown = CurrentSpawnCooldown;
@@ -103,6 +117,22 @@ public class GameModeSurvival : GameMode
         return objToSpawn;
     }
 
+    public bool SpawnerIsValid(GameObject spawner)
+    {
+        if (player == null)
+            return false;
+
+        Vector3 position = spawner.transform.position;
+        float distance = Vector3.Distance(position, player.head.position);
+        if (enemySpawnEndDistance < distance || distance < enemySpawnStartDistance)
+            return false;
+        float angle = enemySpawnvisibilityCheckAngle * Mathf.Deg2Rad / 2;
+        if (Utility.AngleBetweenTwoVectors(player.head.forward, position - player.head.position) < angle && Utility.IsVisible(position + Vector3.up * 2, player.gameObject, float.MaxValue, player.Position, enemySpawnCheckMask)) 
+            return false;
+
+        return true;
+    }
+
     public override bool SpawnPlayer()
     {
         return true;
@@ -110,6 +140,15 @@ public class GameModeSurvival : GameMode
 
     public override void FailEnd()
     {
+        gameOverText.text = PTS.ToString() + " PTS\n\n" + GetTimeString();
+        gameOverMenu.SetActive(true);
+        Menu.Instance.CanShow = false;
+        Utility.EnableCursor();
+    }
+
+    public void ReloadScene()
+    {
+        SceneNameContainer.Instance.sceneName = UnityEngine.SceneManagement.SceneManager.GetActiveScene().name;
         SceneNameContainer.Instance.BeginLoading();
     }
 
@@ -127,6 +166,64 @@ public class GameModeSurvival : GameMode
     {
         
     }
+
+    public override void OnEnemyKilled(AICharacter enemy)
+    {
+        AddPTS(enemy.stats.PTSSurvival);
+    }
+
+    public override void OnPlayerDamaged()
+    {
+        PTSMultiplierMeter -= PTSMultiplierPerStage;
+        if (PTSMultiplierMeter < 0)
+            PTSMultiplierMeter = 0;
+    }
+
+    public override GameObject GetHUDElement()
+    {
+        return hudElement;
+    }
+
+    #region PTS
+    private void AddPTS(int pts)
+    {
+        PTS += pts * PTSMultiplier;
+        PTSMultiplierMeter += pts;
+        if (PTSMultiplierMeter > (PTSMultiplierMaxStage + 0.9999f) * PTSMultiplierPerStage)
+            PTSMultiplierMeter = (PTSMultiplierMaxStage + 0.9999f) * PTSMultiplierPerStage;
+
+        PTSMultiplierDecayTimer = 0;
+    }
+
+    private void PTSMultiplierUpdate()
+    {
+        if (PTSMultiplierDecayTimer >= PTSMultiplierDecayDelay)
+        {
+            PTSMultiplierMeter -= Time.deltaTime * PTSMultiplierDecaySpeed;
+            if (PTSMultiplierMeter < 0)
+                PTSMultiplierMeter = 0;
+        }
+        else
+        {
+            PTSMultiplierDecayTimer += Time.deltaTime;
+        }
+    }
+
+    public string GetTimeString()
+    {
+        string hours = ((int)(TimeCounter / 360)).ToString();
+        string minutes = ((int)(TimeCounter / 60) % 60).ToString();
+        string seconds = ((int)(TimeCounter % 60)).ToString();
+        if (hours.Length == 1)
+            hours = hours.Insert(0, "0");
+        if (minutes.Length == 1)
+            minutes = minutes.Insert(0, "0");
+        if (seconds.Length == 1)
+            seconds = seconds.Insert(0, "0");
+        return hours + ":" + minutes + ":" + seconds;
+    }
+
+    #endregion
 }
 
 namespace SurvivalFSM

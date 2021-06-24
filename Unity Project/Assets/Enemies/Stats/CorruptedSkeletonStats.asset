@@ -18,6 +18,7 @@ MonoBehaviour:
   jumpVelocity: 10
   gravityModifier: 3
   damageFunction: {fileID: 11400000, guid: 708fa20603a8fa549814289851e7331f, type: 2}
+  useAttackTokens: 0
   attackTokenType: 1
   attackDamage: 20
   attackDistance: 80
@@ -33,4 +34,5 @@ MonoBehaviour:
   cantFindTimeThreshold: 60
   loot:
   - {fileID: 258508655295086924, guid: dcc111cb5cfc6f9438c20df7d547c21d, type: 3}
-  lootDropChance: 0.2
+  lootDropChance: 0.1
+  PTSSurvival: 75

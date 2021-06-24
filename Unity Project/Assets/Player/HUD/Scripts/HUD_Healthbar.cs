@@ -8,10 +8,26 @@ public class HUD_Healthbar : MonoBehaviour
     public Image healthFill;
     public Image damageEffectFill;
     public Text[] healthCounters;
+    public RawImage lowHealthIndicator;
+    public float lowHealthIndicatorSpeed = 3;
+    private float lowHealthIndicatorParameter = 0;
 
     private void Update()
     {
         DamageEffectUpdate();
+        Color targetColor = lowHealthIndicator.color;
+        if (healthFill.fillAmount <= 1 / 3f)
+        {
+            targetColor.a = Mathf.Abs(Mathf.Sin(lowHealthIndicatorParameter));
+            lowHealthIndicatorParameter += Time.deltaTime * lowHealthIndicatorSpeed;
+            lowHealthIndicatorParameter %= Mathf.PI;
+        }
+        else
+        {
+            targetColor.a = 0;
+            lowHealthIndicatorParameter = 0;
+        }
+        lowHealthIndicator.color = targetColor;
     }
 
     public void SetHealth(float currentHealth, float maxHealth)

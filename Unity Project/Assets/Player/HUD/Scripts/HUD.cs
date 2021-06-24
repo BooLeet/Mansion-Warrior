@@ -39,6 +39,13 @@ public class HUD : MonoBehaviour
         Instantiate(damageIndicatorPrefab, worldSpaceCanvas).GetComponent<HUD_DamageIndicator>().StartEffect(damageSource, player);
     }
 
+    private void Start()
+    {
+        GameObject gameModeHUDElement = GameMode.Instance.GetHUDElement();
+        if (gameModeHUDElement)
+            Instantiate(gameModeHUDElement, worldSpaceCanvas);
+    }
+
     private void Update()
     {
         if (messagePermanent)

@@ -718,7 +718,7 @@ MonoBehaviour:
   attackAnimation:
     triggers:
     - Attack
-    duration: 1.5
+    duration: 1.25
   attackSound: {fileID: 8300000, guid: f046f83f29d32ee4299daf9acb7e4b92, type: 3}
   walkSound: {fileID: 8300000, guid: 34a10569826a94140abb90274f7f4f09, type: 3}
   miscSounds: []
@@ -931,7 +931,8 @@ MonoBehaviour:
   verticalTargetingOffset: 1.5
   head: {fileID: 4442012863317707294}
   center: {x: 0, y: 1.5, z: 0}
-  radius: 1.5
+  radius: 1
+  navRadius: 1.5
   height: 3
   stats: {fileID: 11400000, guid: ff6d6885e59405642b107a60382894aa, type: 2}
   animator: {fileID: 7025006329700603256}

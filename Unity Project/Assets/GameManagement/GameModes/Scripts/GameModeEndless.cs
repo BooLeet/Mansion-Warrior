@@ -73,7 +73,7 @@ public class GameModeEndless : GameMode
         if (Vector3.Distance(position, PlayerCharacter.Instance.Position) > enemySpawnDistance)
             return false;
 
-        return Utility.IsVisible(position + Vector3.up, PlayerCharacter.Instance.gameObject, enemySpawnDistance, PlayerCharacter.Instance.verticalTargetingOffset, enemySpawnCheckMask);
+        return Utility.IsVisible(position + Vector3.up, PlayerCharacter.Instance.gameObject, enemySpawnDistance, PlayerCharacter.Instance.Position, enemySpawnCheckMask);
     }
 
     public override bool SpawnPlayer()
@@ -87,6 +87,21 @@ public class GameModeEndless : GameMode
     }
 
     public override void OnEnemyDamaged()
+    {
+        
+    }
+
+    public override GameObject GetHUDElement()
+    {
+        return null;
+    }
+
+    public override void OnEnemyKilled(AICharacter enemy)
+    {
+        
+    }
+
+    public override void OnPlayerDamaged()
     {
         
     }

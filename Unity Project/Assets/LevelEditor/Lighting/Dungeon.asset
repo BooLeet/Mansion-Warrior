@@ -17,7 +17,7 @@ MonoBehaviour:
   equatorColor: {r: 0, g: 0, b: 0, a: 1}
   groundColor: {r: 0, g: 0, b: 0, a: 1}
   singleColor: 1
-  fullColor: {r: 0.2924528, g: 0.2924528, b: 0.2924528, a: 1}
+  fullColor: {r: 0.3679245, g: 0.3679245, b: 0.3679245, a: 1}
   fog: 0
   fogColor: {r: 0, g: 0, b: 0, a: 0}
   fogStart: 0

@@ -76,11 +76,11 @@ public class AICharacter : Character
         {
             Vector3 coneStart = head.position - head.forward * 2;
 
-            PlayerIsVisible = Utility.IsVisible(head.position, player.gameObject, stats.visibilityDistance, player.verticalTargetingOffset, stats.visibleLayers);
+            PlayerIsVisible = Utility.IsVisible(head.position, player.gameObject, stats.visibilityDistance, player.Position, stats.visibleLayers);
 
             PlayerIsInfront = Utility.WithinAngle(coneStart, head.forward, player.gameObject.transform.position + Vector3.up * player.verticalTargetingOffset, stats.visibilityAngle)
                           && Utility.WithinAngle(head.position, head.forward, player.gameObject.transform.position + Vector3.up * player.verticalTargetingOffset, 180)
-                          && Utility.IsVisible(head.position, player.gameObject, stats.visibilityDistance, player.verticalTargetingOffset, stats.visibleLayers);
+                          && Utility.IsVisible(head.position, player.gameObject, stats.visibilityDistance, player.Position, stats.visibleLayers);
             DistanceToPlayer = Vector3.Distance(Position, player.Position);
         }
         else
@@ -129,7 +129,7 @@ public class AICharacter : Character
         if (attackTokenCooldown == 0)
         {
             attacksPerTokenLeft = stats.attacksPerToken;
-            HasAttackToken = director.RequestAttackToken(this);
+            HasAttackToken = stats.useAttackTokens ? director.RequestAttackToken(this) : true;
         }
     }
 
@@ -138,7 +138,8 @@ public class AICharacter : Character
         if (!HasAttackToken)
             return;
         HasAttackToken = false;
-        director.ReturnAttackToken(this);
+        if(stats.useAttackTokens)
+            director.ReturnAttackToken(this);
     }
 
     private void SpendAttackToken()
@@ -157,7 +158,7 @@ public class AICharacter : Character
     #region Attack
     public void Attack()
     {
-        Action(AttackStartCallback, AttackEndCallback, animator.attackAnimation.duration, ActionType.Fire);
+        Action(AttackStartCallback, AttackEndCallback, null, animator.attackAnimation.duration, ActionType.Fire);
     }
 
     void AttackStartCallback()
@@ -203,6 +204,7 @@ public class AICharacter : Character
 
     protected override void DeathEffect()
     {
+        GameMode.Instance.OnEnemyKilled(this);
         DropLoot();
         ReturnAttackToken();
         director.Unregister(this);

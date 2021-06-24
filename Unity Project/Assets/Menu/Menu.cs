@@ -14,7 +14,7 @@ public class Menu : MonoBehaviour
     public bool isHiddenByDefault = false;
     public bool pauseOnShow = true;
     public static bool IsHidden { get { return !Instance.mainPanel.activeSelf; } }
-
+    public bool CanShow { get; set; }
 
     void Awake()
     {
@@ -28,11 +28,12 @@ public class Menu : MonoBehaviour
         }
         setStack = new Stack<MenuSet>();
         menuSets = new List<MenuSet>();
+        CanShow = true;
     }
 
     private void Update()
     {
-        if (GameManager.Instance.ListenForPause && (Input.GetKeyDown(KeyCode.Tab) || Input.GetKeyDown(KeyCode.Escape) || (PlayerCharacter.Instance != null && PlayerCharacter.Instance.input.GetPause())))
+        if (CanShow && GameManager.Instance.ListenForPause && (Input.GetKeyDown(KeyCode.Tab) || Input.GetKeyDown(KeyCode.Escape) || (PlayerCharacter.Instance != null && PlayerCharacter.Instance.input.GetPause())))
         {
             if (IsHidden)
                 Show();

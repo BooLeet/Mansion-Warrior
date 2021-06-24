@@ -117,6 +117,8 @@ public class PlayerAnimator : MonoBehaviour
     public void Idle()
     {
         SetTrigger(currentSet.idle);
+        SetWeaponAnimationTriggers(rightWeaponAnim, "Idle");
+        SetWeaponAnimationTriggers(leftWeaponAnim, "Idle");
     }
 
     public void FireWeapon()
@@ -214,7 +216,7 @@ public class PlayerAnimator : MonoBehaviour
 
     private void SetTrigger(string trigger)
     {
-        if (trigger == "")
+        if (trigger == "" || trigger == null)
             return;
         animator.SetTrigger(trigger);
     }

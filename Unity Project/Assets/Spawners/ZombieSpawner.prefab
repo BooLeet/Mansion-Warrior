@@ -137,4 +137,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7b5750ba3c00c4f4cab69c0bbee133af, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyPrefab: {fileID: 0}
+  spawnEffect: {fileID: 3781597137594282666, guid: c5f2251c25f845845b7e4d320118d48f,
+    type: 3}

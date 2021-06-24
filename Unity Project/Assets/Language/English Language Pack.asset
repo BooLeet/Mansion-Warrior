@@ -127,7 +127,7 @@ MonoBehaviour:
       value: MMB
   - keyValues:
     - key: restartGame
-      value: Press Jump to Restart
+      value: Restart
     - key: noAmmo
       value: Not Enough Ammo. Punch!
     - key: gameFinish

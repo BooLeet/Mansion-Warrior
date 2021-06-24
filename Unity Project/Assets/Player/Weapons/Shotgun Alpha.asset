@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Shotgun Alpha
   m_EditorClassIdentifier: 
   damageFunction: {fileID: 11400000, guid: b30f298f815b5874aa371e22ec8759dc, type: 2}
-  damage: 1
+  damage: 4
   fullAuto: 1
   type: 2
   rightPrefab: {fileID: 8679267395196429257, guid: 395706f3580d5a04d9abaf85e3fba015,

@@ -46,10 +46,9 @@ public class DestructableObjectPiece : MonoBehaviour {
         if (!destructionEnabled)
             return;
 
+        transform.localScale = Vector3.Lerp(Vector3.zero, startingScale, Mathf.Clamp(timeCounter / effectTime, 0.001f, 1));
+        timeCounter -= Time.deltaTime;
         if (timeCounter <= 0)
             Destroy(gameObject);
-
-        transform.localScale = Vector3.Lerp(Vector3.zero, startingScale, timeCounter / effectTime);
-        timeCounter -= Time.deltaTime;
     }
 }

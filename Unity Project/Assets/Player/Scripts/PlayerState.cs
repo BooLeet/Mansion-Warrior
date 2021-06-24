@@ -119,6 +119,9 @@ namespace PlayerStates
             if (player.input.GetFireWeapon(player.PlayerInventory.CurrentWeapon.weapon))
                 player.FireWeaponAction();
 
+            if (player.input.GetPunch())
+                player.MeleeAction();
+
             player.animator.ProceduralEffects(player.input.GetRotationInput(), Vector2.zero);
         }
 
@@ -167,6 +170,7 @@ namespace PlayerStates
             player.IsInvincible = true;
             player.ResetInertia();
             player.animator.SlamStart();
+            player.InteruptAction();
             startVerticalAimAngle = player.VerticalAimAngle;
         }
 

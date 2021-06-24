@@ -41,7 +41,7 @@ GameObject:
   - component: {fileID: 2408420381110189469}
   - component: {fileID: 4193205548586634068}
   m_Layer: 12
-  m_Name: MeleeCyborg
+  m_Name: MeleeCyborgBackup
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -78,7 +78,8 @@ MonoBehaviour:
   verticalTargetingOffset: 1
   head: {fileID: 8356870464819336691}
   center: {x: 0, y: 1, z: 0}
-  radius: 1
+  radius: 0.5
+  navRadius: 1
   height: 2
   stats: {fileID: 11400000, guid: a196a9b07fae1aa4ba0f5b69cc708545, type: 2}
   animator: {fileID: 3065657761137925147}

@@ -31,4 +31,19 @@ public class GameModeBase : GameMode
     {
         
     }
+
+    public override GameObject GetHUDElement()
+    {
+        return null;
+    }
+
+    public override void OnEnemyKilled(AICharacter enemy)
+    {
+        
+    }
+
+    public override void OnPlayerDamaged()
+    {
+        
+    }
 }

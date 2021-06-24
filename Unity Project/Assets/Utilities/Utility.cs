@@ -29,11 +29,37 @@ public static class Utility{
         return Vector3.Distance(pivotDirection, (objectPosition - pivotPosition).normalized) < directionalDistance;
     }
 
-    public static bool IsVisible(Vector3 from, GameObject obj, float maxDistance, float verticalOffset = 0, int layerMask = int.MaxValue)
+    public static bool IsVisible(Vector3 from, GameObject obj, float maxDistance, Vector3 positionToCheck, LayerMask layerMask)
     {
-        Ray ray = new Ray(from, obj.transform.position + Vector3.up * verticalOffset - from);
+        Ray ray = new Ray(from, positionToCheck - from);
         RaycastHit hit;
         if(Physics.Raycast(ray,out hit, maxDistance,layerMask))
+        {
+            if (obj == hit.collider.gameObject)
+                return true;
+        }
+
+        return false;
+    }
+
+    public static bool IsVisible(Vector3 from, GameObject obj, float maxDistance, Vector3 positionToCheck)
+    {
+        Ray ray = new Ray(from, positionToCheck - from);
+        RaycastHit hit;
+        if (Physics.Raycast(ray, out hit, maxDistance))
+        {
+            if (obj == hit.collider.gameObject)
+                return true;
+        }
+
+        return false;
+    }
+
+    public static bool IsVisible(Vector3 from, GameObject obj, float maxDistance)
+    {
+        Ray ray = new Ray(from, obj.transform.position - from);
+        RaycastHit hit;
+        if (Physics.Raycast(ray, out hit, maxDistance))
         {
             if (obj == hit.collider.gameObject)
                 return true;

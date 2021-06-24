@@ -43,7 +43,7 @@ MonoBehaviour:
   - nameKey: ammoShotgun
     count: 9
   - nameKey: ammoMachineGun
-    count: 50
+    count: 60
   interactionDistance: 4
   interactionAngle: 90
   pickupDistance: 4

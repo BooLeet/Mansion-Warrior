@@ -139,8 +139,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pickupSound: {fileID: 8300000, guid: a11e158e97158044aa43389709e13b62, type: 3}
   indicatorColor: {r: 1, g: 1, b: 1, a: 1}
-  ammoNameKey: ammoShotgun
-  ammoCount: 4
+  ammoInfo: []
 --- !u!1 &6633995072930347626
 GameObject:
   m_ObjectHideFlags: 0
@@ -200,7 +199,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: d04850e12198648489207cbb4be4ab2b, type: 2}
+  - {fileID: 2100000, guid: 8e1cde2e3391ca6488590f6cf78065a9, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

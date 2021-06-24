@@ -10,6 +10,7 @@ public abstract class Character : Entity {
     public Vector3 center = Vector3.up;
     [Range(0,10)]
     public float radius = 0.5f;
+    public float navRadius = 0.5f;
     [Range(0, 10)]
     public float height = 2;
     protected CharacterController controller;
@@ -31,6 +32,7 @@ public abstract class Character : Entity {
     private float actionTimeCounter = 0;
     private bool actionFlag = false;
     private Utility.VoidFunction actionEndCallback = null;
+    private Utility.VoidFunction actionInteruptCallback = null;
 
     public bool PerformingAction { get { return actionTimeCounter > 0 || actionFlag; } }
     public enum ActionType { Fire, Reload, Misc };
@@ -49,7 +51,7 @@ public abstract class Character : Entity {
         capsuleCollider.height = height;
 
         navAgent = gameObject.AddComponent<NavMeshAgent>();
-        navAgent.radius = radius;
+        navAgent.radius = navRadius;
         navAgent.height = height;
         navAgent.speed = GetCharacterStats().moveSpeed;
         navAgent.acceleration = 1000;
@@ -398,12 +400,13 @@ public abstract class Character : Entity {
     #endregion
 
     #region Action
-    protected void Action(Utility.VoidFunction startCallback, Utility.VoidFunction endCallback, float duration, ActionType type)
+    protected void Action(Utility.VoidFunction startCallback, Utility.VoidFunction endCallback, Utility.VoidFunction interuptCallback, float duration, ActionType type)
     {
         if (PerformingAction)
             return;
 
         actionEndCallback = endCallback;
+        actionInteruptCallback = interuptCallback;
         startCallback();
         CurrentActionType = type;
         actionTimeCounter = duration;
@@ -427,6 +430,19 @@ public abstract class Character : Entity {
                 actionEndCallback = null;
                 func();
             }
+        }
+    }
+
+    public void InteruptAction()
+    {
+        actionFlag = false;
+        actionTimeCounter = 0;
+        actionEndCallback = null;
+        if (actionInteruptCallback != null)
+        {
+            Utility.VoidFunction func = actionInteruptCallback;
+            actionInteruptCallback = null;
+            func();
         }
     }
     #endregion

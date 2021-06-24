@@ -71,16 +71,9 @@ public class PlayerCharacter : Character
     protected override void ControllerUpdate()
     {
         //////////
-        if (gameFinish)
+        if (gameFinish || IsDead)
             return;
-
-        if (IsDead)
-        {
-            if(Input.GetKeyDown(KeyCode.Return))
-            GameMode.Instance.FailEnd();
-            return;
-        }
-            
+ 
 
         HUDUpdate();
         if (GameManager.IsPaused())
@@ -167,7 +160,7 @@ public class PlayerCharacter : Character
             controllerHeight /= 2;
             headPosition /= 2;
         }
-
+        verticalTargetingOffset = controllerCenter;
         controller.center = Vector3.Lerp(controller.center, Vector3.up * controllerCenter, Time.deltaTime * 10);
         controller.height = Mathf.Lerp(controller.height, controllerHeight, Time.deltaTime * 10);
         head.localPosition = Vector3.Lerp(head.localPosition, Vector3.up * headPosition, Time.deltaTime * 10);
@@ -206,7 +199,7 @@ public class PlayerCharacter : Character
         }
 
         var foundEntities = from entity in EntityRegistry.GetInstance().GetClosestEntities(head.position, stats.autoTargetRange, this)
-                            where Utility.IsVisible(head.position, entity.gameObject, stats.autoTargetRange, entity.verticalTargetingOffset,stats.autoTargetLayerMask) &&
+                            where Utility.IsVisible(head.position, entity.gameObject, stats.autoTargetRange, entity.Position,stats.autoTargetLayerMask) &&
                             Utility.WithinAngle(head.position, head.forward, entity.Position, stats.autoTargetAngle)
                             orderby Vector3.Distance(head.forward, (entity.Position - head.position).normalized)
                             select entity;
@@ -251,7 +244,7 @@ public class PlayerCharacter : Character
         if (GetCurrentWeaponLoadedAmmo() >= GetCurrentWeaponAmmoPerShot())
         {
             IsSprinting = false;
-            Action(FireWeaponStartCallback, FireWeaponEndCallback, animator.GetCurrentSet().fireDuration, ActionType.Fire);
+            Action(FireWeaponStartCallback, FireWeaponEndCallback, null, animator.GetCurrentSet().fireDuration, ActionType.Fire);
         }
         else
             ReloadWeaponAction();
@@ -288,7 +281,7 @@ public class PlayerCharacter : Character
         if (IsSprinting)
             return;
 
-        Action(animator.InspectWeapon, null, 0, ActionType.Misc);
+        Action(animator.InspectWeapon, null, null, 0, ActionType.Misc);
     }
 
     #endregion
@@ -298,14 +291,14 @@ public class PlayerCharacter : Character
     void EquipWeaponAction()
     {
         if (PlayerInventory.CurrentWeapon == null)
-            Action(EquipWeaponCallback, null, animator.GetWeaponSet(weaponToEquip.weapon).equipDuration, ActionType.Reload);
+            Action(EquipWeaponCallback, null, null, animator.GetWeaponSet(weaponToEquip.weapon).equipDuration, ActionType.Reload);
         else
-            Action(animator.Holster, EquipWeaponSecondAction, animator.GetCurrentSet().holsterDuration, ActionType.Reload);
+            Action(animator.Holster, EquipWeaponSecondAction, null, animator.GetCurrentSet().holsterDuration, ActionType.Reload);
     }
 
     void EquipWeaponSecondAction()
     {
-        Action(EquipWeaponCallback, null, animator.GetWeaponSet(weaponToEquip.weapon).equipDuration, ActionType.Reload);
+        Action(EquipWeaponCallback, null, null, animator.GetWeaponSet(weaponToEquip.weapon).equipDuration, ActionType.Reload);
     }
 
     void EquipWeaponCallback()
@@ -341,13 +334,13 @@ public class PlayerCharacter : Character
             return;
         }
 
-        Action(animator.ReloadInit, ReloadWeaponInitCallback, animator.GetCurrentSet().reloadInitDuration, ActionType.Reload);
+        Action(animator.ReloadInit, ReloadWeaponInitCallback, null, animator.GetCurrentSet().reloadInitDuration, ActionType.Reload);
     }
 
 
     void ReloadWeaponInitCallback()
     {
-        Action(animator.ReloadWeapon, ReloadWeaponCallback, animator.GetCurrentSet().reloadDuration, ActionType.Reload);
+        Action(animator.ReloadWeapon, ReloadWeaponCallback, null, animator.GetCurrentSet().reloadDuration, ActionType.Reload);
     }
 
     void ReloadWeaponCallback()
@@ -355,7 +348,7 @@ public class PlayerCharacter : Character
         if (PlayerInventory.CurrentWeapon.IsFullyLoaded() || cancelReload || GetCurrentWeaponAmmo() == 0)
         {
             cancelReload = false;
-            Action(animator.ReloadEnd, null, animator.GetCurrentSet().reloadEndDuration, ActionType.Reload);
+            Action(animator.ReloadEnd, null, null, animator.GetCurrentSet().reloadEndDuration, ActionType.Reload);
         }
         else
             ReloadWeaponInitCallback();
@@ -378,7 +371,7 @@ public class PlayerCharacter : Character
 
     public void MeleeAction()
     {
-        Action(MeleeStartCallback, MeleeEndCallback, animator.punchDuration, ActionType.Fire);
+        Action(MeleeStartCallback, MeleeEndCallback, MeleeInteruptCallback, animator.punchDuration, ActionType.Fire);
     }
 
     private void MeleeStartCallback()
@@ -394,11 +387,15 @@ public class PlayerCharacter : Character
         EquipWeaponSecondAction();
     }
 
+    private void MeleeInteruptCallback()
+    {
+        animator.EquipWeapon(weaponToEquip.weapon);
+    }
+
     public void MeleeDamageCall()
     {
         stats.meleeFunction.DoDamage(this, stats.meleeDamage);
     }
-
     #endregion
 
     #region Slide and Jump Strength Recovery
@@ -428,8 +425,10 @@ public class PlayerCharacter : Character
 
     protected override void DeathEffect()
     {
-        //hud.Hide();
-        hud.UIMessage(Localizer.Localize("restartGame"), true);
+        hud.Hide();
+        GameMode.Instance.FailEnd();
+        InteruptAction();
+        //hud.UIMessage(Localizer.Localize("restartGame"), true);
         animator.DashEffectOff();
         animator.Death();
     }
@@ -439,6 +438,7 @@ public class PlayerCharacter : Character
         CameraShaker.Shake(transform.position, 0.25f);
         animator.PlayDamageSound();
         hud.DamageIndicator(sourcePosition, this);
+        GameMode.Instance.OnPlayerDamaged();
     }
 
     #endregion
@@ -605,7 +605,7 @@ public class PlayerCharacter : Character
 
         var inter = from interactable in closest
                     where Utility.WithinAngle(head.position, head.forward, interactable.ButtonPosition, stats.interactionAngle)
-                    && Utility.IsVisible(head.position, interactable.gameObject, stats.interactionDistance + 1, (interactable.ButtonPosition - interactable.gameObject.transform.position).y)
+                    && Utility.IsVisible(head.position, interactable.gameObject, stats.interactionDistance + 1, interactable.ButtonPosition)
                     select new { interactable, direcionalDistance = Vector3.Distance(head.forward, (interactable.ButtonPosition - head.position).normalized) };
 
         var temp = from x in inter

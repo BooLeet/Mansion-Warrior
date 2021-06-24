@@ -23,4 +23,10 @@ public abstract class GameMode : MonoBehaviour
     public abstract void SuccessEnd();
 
     public abstract void OnEnemyDamaged();
+
+    public abstract void OnEnemyKilled(AICharacter enemy);
+
+    public abstract void OnPlayerDamaged();
+
+    public abstract GameObject GetHUDElement();
 }

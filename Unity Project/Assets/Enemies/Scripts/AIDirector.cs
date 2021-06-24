@@ -117,7 +117,7 @@ public class AIDirector : MonoBehaviour {
     {
         foreach (AICharacter ai in characters)
             if (!ai.IsAlert && Vector3.Distance(position, ai.Position) <= ai.stats.visibilityDistance
-                && Utility.IsVisible(position, ai.gameObject, ai.stats.visibilityDistance,ai.verticalTargetingOffset))
+                && Utility.IsVisible(position, ai.gameObject, ai.stats.visibilityDistance,ai.Position))
                 ai.Alarm(playerPosition);
                 
     }

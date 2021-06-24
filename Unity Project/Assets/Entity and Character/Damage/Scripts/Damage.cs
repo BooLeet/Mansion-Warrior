@@ -8,7 +8,7 @@ public static class Damage
     public static void ExplosiveDamage(Vector3 origin, float damage, float range, Entity damagingEntity, int layerMask = int.MaxValue, bool checkVisibility = true)//float explosionForce
     {
         var closestVisibleEntities = from entity in EntityRegistry.GetInstance().GetClosestEntities(origin, range, damagingEntity)
-                                     where !checkVisibility || Utility.IsVisible(origin, entity.gameObject, range, entity.verticalTargetingOffset, layerMask)
+                                     where !checkVisibility || Utility.IsVisible(origin, entity.gameObject, range, entity.Position, layerMask)
                                      select entity;
 
         foreach (Entity e in closestVisibleEntities)

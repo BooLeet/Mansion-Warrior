@@ -23,7 +23,7 @@ public class ConeDamageFunction : DamageFunction
         Vector3 offsetOrigin = origin - direction.normalized * coneOffset;
         var closestEntitiesWithinAngle = from entity in EntityRegistry.GetInstance().GetClosestEntities(offsetOrigin, range + coneOffset, attacker)
                                          where Utility.WithinAngle(offsetOrigin, direction, entity.Position, coneAngle) && Vector3.Distance(entity.Position, offsetOrigin) >= coneOffset &&
-                                         Utility.IsVisible(origin, entity.gameObject, range, entity.verticalTargetingOffset, layerMask)
+                                         Utility.IsVisible(origin, entity.gameObject, range, entity.Position, layerMask)
                                          select new { entity, distance = Vector3.Distance(entity.Position, origin) };
 
         IEnumerable<Entity> entitiesToDamage = from entityInfo in closestEntitiesWithinAngle
