@@ -241,7 +241,9 @@ public class PlayerCharacter : Character
     
     public void FireWeaponAction()
     {
-        if (GetCurrentWeaponLoadedAmmo() >= GetCurrentWeaponAmmoPerShot())
+        if (PerformingAction && CurrentActionType == ActionType.Reload)
+            CancelReload();
+        else if (GetCurrentWeaponLoadedAmmo() >= GetCurrentWeaponAmmoPerShot())
         {
             IsSprinting = false;
             Action(FireWeaponStartCallback, FireWeaponEndCallback, null, animator.GetCurrentSet().fireDuration, ActionType.Fire);
@@ -319,7 +321,6 @@ public class PlayerCharacter : Character
 
     #region Reload Weapon
 
-
     public void ReloadWeaponAction()
     {
         if (PlayerInventory.CurrentWeapon.IsFullyLoaded())
@@ -336,7 +337,6 @@ public class PlayerCharacter : Character
 
         Action(animator.ReloadInit, ReloadWeaponInitCallback, null, animator.GetCurrentSet().reloadInitDuration, ActionType.Reload);
     }
-
 
     void ReloadWeaponInitCallback()
     {
@@ -364,13 +364,14 @@ public class PlayerCharacter : Character
         cancelReload = true;
     }
 
-
     #endregion
 
     #region Melee
 
     public void MeleeAction()
     {
+        if (PerformingAction && CurrentActionType == ActionType.Reload || CurrentActionType == ActionType.Misc)
+            InteruptAction();
         Action(MeleeStartCallback, MeleeEndCallback, MeleeInteruptCallback, animator.punchDuration, ActionType.Fire);
     }
 

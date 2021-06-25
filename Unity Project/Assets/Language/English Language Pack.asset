@@ -75,7 +75,7 @@ MonoBehaviour:
     - key: off
       value: Off
     - key: settingResetKeys
-      value: Set Default Keys
+      value: Set Default
     - key: settingMouseSensitivity
       value: Look Sensitivity
     - key: settingSFX
@@ -125,10 +125,26 @@ MonoBehaviour:
       value: RMB
     - key: mmb
       value: MMB
+    - key: sprint
+      value: Sprint
+    - key: ability
+      value: Ability
+    - key: reload
+      value: Reload
+    - key: melee
+      value: Melee
+    - key: swapWeapon
+      value: Swap Weapon
+    - key: slide
+      value: Slide
   - keyValues:
     - key: restartGame
       value: Restart
     - key: noAmmo
       value: Not Enough Ammo. Punch!
+    - key: survivalNewTimeRecord
+      value: New Time Record!
+    - key: survivalNewScoreRecord
+      value: New ScoreRecord!
     - key: gameFinish
       value: Thank you for playing! Visit booleet.itch.io for more of my games!

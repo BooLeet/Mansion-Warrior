@@ -95,7 +95,7 @@ public class Settings
             new SettingKeyCodeValue("fire", KeyCode.Mouse0),
             new SettingKeyCodeValue("ability", KeyCode.V),
             new SettingKeyCodeValue("reload", KeyCode.R),
-            new SettingKeyCodeValue("melee", KeyCode.E),
+            new SettingKeyCodeValue("melee", KeyCode.Mouse1),
             new SettingKeyCodeValue("swapWeapon", KeyCode.Alpha1),
             new SettingKeyCodeValue("interact", KeyCode.F),
             new SettingKeyCodeValue("slide", KeyCode.C),

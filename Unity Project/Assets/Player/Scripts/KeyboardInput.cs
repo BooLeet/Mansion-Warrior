@@ -12,8 +12,8 @@ public class KeyboardInput : PlayerInput
     private float semiAutoPressTimeCounter = 0;
     public float semiAutoPressDuration = 0.2f;
 
-    private float punchPressTimeCounter = 0;
-    public float punchPressTimeDuration = 0.3f;
+    //private float punchPressTimeCounter = 0;
+    //public float punchPressTimeDuration = 0.3f;
 
     private void Update()
     {
@@ -24,10 +24,6 @@ public class KeyboardInput : PlayerInput
         if (Input.GetKeyDown(Settings.GetKeyCode("fire")))
             semiAutoPressTimeCounter = semiAutoPressDuration;
 
-        if (punchPressTimeCounter > 0)
-            punchPressTimeCounter -= Time.deltaTime;
-        if (Input.GetKey(Settings.GetKeyCode("melee")))
-            punchPressTimeCounter = punchPressTimeDuration;
 
     }
 
@@ -98,7 +94,7 @@ public class KeyboardInput : PlayerInput
 
     public override bool GetPunch()
     {
-        return punchPressTimeCounter > 0;
+        return Input.GetKeyDown(Settings.GetKeyCode("melee"));
     }
 
     public override bool GetPause()

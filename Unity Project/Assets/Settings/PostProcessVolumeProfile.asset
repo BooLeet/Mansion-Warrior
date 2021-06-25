@@ -118,7 +118,7 @@ MonoBehaviour:
   settings:
   - {fileID: 114065399647409342}
   - {fileID: 114501906145162340}
-  - {fileID: 4387563592928284163}
+  - {fileID: 4754790273278312796}
   - {fileID: 114981667653416594}
   - {fileID: -1355296428959236534}
   - {fileID: 114986950776308208}
@@ -1592,7 +1592,7 @@ MonoBehaviour:
   vignette:
     overrideState: 1
     value: 1
---- !u!114 &4387563592928284163
+--- !u!114 &4754790273278312796
 MonoBehaviour:
   m_ObjectHideFlags: 3
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1610,7 +1610,7 @@ MonoBehaviour:
     value: 1
   shutterAngle:
     overrideState: 0
-    value: 270
+    value: 135
   sampleCount:
-    overrideState: 1
-    value: 32
+    overrideState: 0
+    value: 10

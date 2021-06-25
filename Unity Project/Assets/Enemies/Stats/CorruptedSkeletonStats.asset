@@ -35,4 +35,4 @@ MonoBehaviour:
   loot:
   - {fileID: 258508655295086924, guid: dcc111cb5cfc6f9438c20df7d547c21d, type: 3}
   lootDropChance: 0.1
-  PTSSurvival: 75
+  PTSSurvival: 15

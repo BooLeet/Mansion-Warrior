@@ -16,4 +16,4 @@ MonoBehaviour:
   radius: 0.5
   graphic: {fileID: 8744337156114032675, guid: c492e95575502cf458073f7d018355c0, type: 3}
   hitEffect: {fileID: 74631410306418975, guid: 75519b7b6851d2942b4bb1cd8066f311, type: 3}
-  projectileLayer: 17
+  projectileLayer: 18

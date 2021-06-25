@@ -25,7 +25,7 @@ MonoBehaviour:
   slideDuration: 0.6
   slideDurationRecoveryTime: 1.5
   meleeFunction: {fileID: 11400000, guid: f7496f09467e68943a05f82b4e97ef3c, type: 2}
-  meleeDamage: 5
+  meleeDamage: 10
   maxRecoilParameter: 5
   recoilRecoveryParameter: 10
   primaryWeapon: {fileID: 11400000, guid: c6c7dfee00e1552418f78c020aa3f188, type: 2}
@@ -41,9 +41,9 @@ MonoBehaviour:
   - nameKey: ammoPistol
     count: 50
   - nameKey: ammoShotgun
-    count: 9
+    count: 0
   - nameKey: ammoMachineGun
-    count: 60
+    count: 30
   interactionDistance: 4
   interactionAngle: 90
   pickupDistance: 4

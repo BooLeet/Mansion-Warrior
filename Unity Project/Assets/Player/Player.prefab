@@ -2560,7 +2560,6 @@ MonoBehaviour:
   holdSprint: 0
   verticalRotationSpeedMultiplier: 0.7
   semiAutoPressDuration: 0.2
-  punchPressTimeDuration: 0.3
 --- !u!1 &6031002592798074463
 GameObject:
   m_ObjectHideFlags: 0
@@ -3061,7 +3060,7 @@ MonoBehaviour:
     reloadEndDuration: 0
     equipDuration: 0.33333334
     holsterDuration: 0.25
-    fireSound: {fileID: 8300000, guid: 9268de6d20be49346a14013d4c35cfe3, type: 3}
+    fireSound: {fileID: 8300000, guid: ee7bba0aa2dc28a46b55d641551a6109, type: 3}
     miscSounds:
     - {fileID: 8300000, guid: 6bb75243bc314ad468c379664a378d74, type: 3}
     - {fileID: 8300000, guid: 71b8c8891abfdd44fa0cf57c9cd9e7ae, type: 3}
@@ -3111,7 +3110,7 @@ MonoBehaviour:
   punchTriggers:
   - Punch01
   - Punch02
-  punchDuration: 0.5
+  punchDuration: 0.41666666
   punchSound: {fileID: 8300000, guid: a5c0c0d77a358bd43a9393945d877c91, type: 3}
   punchHitEffect: {fileID: 5493243307260025554, guid: ef9728d5bb8ca974197df7c114c91277,
     type: 3}

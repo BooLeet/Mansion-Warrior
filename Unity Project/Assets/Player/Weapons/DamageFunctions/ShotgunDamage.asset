@@ -15,6 +15,7 @@ MonoBehaviour:
   damageRange: 200
   hitEffect: {fileID: 1005408861963238, guid: 993196c323abffa46bfe6762f178e1ed, type: 3}
   hitscansPerCall: 5
+  punchThroughtCount: 10
   layerMask:
     serializedVersion: 2
     m_Bits: 38711

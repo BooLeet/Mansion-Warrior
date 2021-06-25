@@ -8,7 +8,10 @@ public class GameModeSurvival : GameMode
     public GameObject gameOverMenu;
     public Text gameOverText;
     public GameObject hudElement;
+    [Space]
+    public LoadTestLevel levelLoader;
     public AIDirector AIDirector;
+    [Space]
     public GameObject regularEnemyPrefab;
     public GameObject mediumEnemyPrefab;
     public GameObject hardEnemyPrefab;
@@ -16,8 +19,6 @@ public class GameModeSurvival : GameMode
     private PlayerCharacter player;
 
     public float CurrentSpawnCooldown { get; private set; }
-    
-
     
     public LayerMask enemySpawnCheckMask;
 
@@ -138,10 +139,23 @@ public class GameModeSurvival : GameMode
         return true;
     }
 
+    public string GetMapName()
+    {
+        return levelLoader.levelName;
+    }
+
     public override void FailEnd()
     {
-        gameOverText.text = PTS.ToString() + " PTS\n\n" + GetTimeString();
+        SurvivalRecords.LoadRecords().UpdateRecords(new SurvivalRecords.Record(GetMapName(), TimeCounter, PTS),out bool newTimeRecord, out bool newScoreRecord);
+
+        gameOverText.text = PTS.ToString() + " PTS\n\n" + GetTimeString(TimeCounter) + "\n\n";
+        if (newTimeRecord)
+            gameOverText.text += Localizer.Localize("survivalNewTimeRecord") + "\n\n";
+        if (newScoreRecord)
+            gameOverText.text += Localizer.Localize("survivalNewScoreRecord");
+
         gameOverMenu.SetActive(true);
+
         Menu.Instance.CanShow = false;
         Utility.EnableCursor();
     }
@@ -184,7 +198,7 @@ public class GameModeSurvival : GameMode
         return hudElement;
     }
 
-    #region PTS
+    #region PTS, Time and record keeping
     private void AddPTS(int pts)
     {
         PTS += pts * PTSMultiplier;
@@ -209,11 +223,11 @@ public class GameModeSurvival : GameMode
         }
     }
 
-    public string GetTimeString()
+    public string GetTimeString(float timeCounter)
     {
-        string hours = ((int)(TimeCounter / 360)).ToString();
-        string minutes = ((int)(TimeCounter / 60) % 60).ToString();
-        string seconds = ((int)(TimeCounter % 60)).ToString();
+        string hours = ((int)(timeCounter / 360)).ToString();
+        string minutes = ((int)(timeCounter / 60) % 60).ToString();
+        string seconds = ((int)(timeCounter % 60)).ToString();
         if (hours.Length == 1)
             hours = hours.Insert(0, "0");
         if (minutes.Length == 1)
@@ -221,6 +235,11 @@ public class GameModeSurvival : GameMode
         if (seconds.Length == 1)
             seconds = seconds.Insert(0, "0");
         return hours + ":" + minutes + ":" + seconds;
+    }
+
+    public SurvivalRecords.Record GetRecord()
+    {
+        return SurvivalRecords.LoadRecords().GetRecord(levelLoader.levelName);
     }
 
     #endregion

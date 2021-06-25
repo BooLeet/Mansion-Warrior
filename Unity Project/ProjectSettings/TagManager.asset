@@ -22,8 +22,8 @@ TagManager:
   - Skybox
   - Doors
   - PlayerIgnoreCollision
-  - Projectile
-  - 
+  - PlayerProjectile
+  - EnemyProjectile
   - 
   - 
   - 

@@ -53,7 +53,7 @@ MonoBehaviour:
   - nameKey: ammoMachineGun
     count: 20
   - nameKey: ammoShotgun
-    count: 3
+    count: 2
 --- !u!1 &3470583620095178024
 GameObject:
   m_ObjectHideFlags: 0

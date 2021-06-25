@@ -17,3 +17,4 @@ MonoBehaviour:
   graphic: {fileID: 8695431941489203344, guid: ca644e8dd95e52943834317f8504d56e, type: 3}
   hitEffect: {fileID: 9173523923258285970, guid: 8695356debf430a47a34c0f766388839,
     type: 3}
+  projectileLayer: 18

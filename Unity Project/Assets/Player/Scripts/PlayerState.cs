@@ -138,6 +138,12 @@ namespace PlayerStates
 
         public override PlayerState Transition(PlayerCharacter player)
         {
+            if (player.CanUseAbility() && player.input.GetAbility())
+            {
+                player.IsCrouching = false;
+                return new SlamStartState();
+            }
+
             if (timeCounter <= 0 || cancelSlide)
             {
                 player.IsCrouching = false;
@@ -201,6 +207,7 @@ namespace PlayerStates
                 player.SetVerticalAimAngle(0);
                 player.IsInvincible = false;
                 player.DoSlamDamage();
+                player.animator.EquipWeapon(player.PlayerInventory.CurrentWeapon.weapon);
                 player.animator.Idle();
                 return new DefaultState();
             }
