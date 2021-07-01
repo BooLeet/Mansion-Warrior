@@ -78,7 +78,7 @@ public class LevelEditorInput : MonoBehaviour
 
     public bool GetCancel()
     {
-        return Enable && Input.GetKeyDown(KeyCode.Escape);
+        return Enable && (Input.GetKeyDown(KeyCode.Escape) || Input.GetKeyDown(KeyCode.Tab));
     }
 
     public Vector2 GetCameraMovementInput()

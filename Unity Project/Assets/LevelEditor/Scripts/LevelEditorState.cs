@@ -86,7 +86,7 @@ namespace LevelEditorStates
             editor.ui.HideMaterialSelector();
             editor.ui.HideObjectSelector();
             editor.ui.ShowDashboard();
-            GameManager.Instance.ListenForPause = true;
+            Menu.Instance.CanShow = true;
         }
 
         public override LevelEditorState Transition(LevelEditor editor)
@@ -115,7 +115,7 @@ namespace LevelEditorStates
         {
             Utility.EnableCursor();
             editor.ui.ShowMaterialSelector();
-            GameManager.Instance.ListenForPause = false;
+            Menu.Instance.CanShow = false;
         }
 
         public override LevelEditorState Transition(LevelEditor editor)
@@ -145,7 +145,7 @@ namespace LevelEditorStates
         {
             Utility.EnableCursor();
             editor.ui.ShowObjectSelector();
-            GameManager.Instance.ListenForPause = false;
+            Menu.Instance.CanShow = false;
         }
 
         public override LevelEditorState Transition(LevelEditor editor)
@@ -177,7 +177,7 @@ namespace LevelEditorStates
             editor.ui.HideDashboard();
             Utility.EnableCursor();
             editor.ui.inputField.text = System.IO.Path.GetFileNameWithoutExtension(editor.LevelToLoad);
-            GameManager.Instance.ListenForPause = false;
+            Menu.Instance.CanShow = false;
         }
 
         public override LevelEditorState Transition(LevelEditor editor)
@@ -216,7 +216,7 @@ namespace LevelEditorStates
             editor.ui.HideDashboard();
             editor.ui.LoadScreenUpdateLevels(Application.dataPath);
             Utility.EnableCursor();
-            GameManager.Instance.ListenForPause = false;
+            Menu.Instance.CanShow = false;
         }
 
         public override LevelEditorState Transition(LevelEditor editor)

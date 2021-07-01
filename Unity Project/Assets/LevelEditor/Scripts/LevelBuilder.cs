@@ -240,10 +240,12 @@ public class LevelBuilder : MonoBehaviour
         obj.AddComponent<MeshFilter>().sharedMesh = onefaceQuad;
         MeshRenderer renderer = obj.AddComponent<MeshRenderer>();
         renderer.sharedMaterial = mat;
-        if(storeEditorInfo)
-            renderer.shadowCastingMode = UnityEngine.Rendering.ShadowCastingMode.TwoSided;
-        else
-            renderer.shadowCastingMode = UnityEngine.Rendering.ShadowCastingMode.Off;
+        //if(storeEditorInfo)
+        //    renderer.shadowCastingMode = UnityEngine.Rendering.ShadowCastingMode.TwoSided;
+        //else
+        //    renderer.shadowCastingMode = UnityEngine.Rendering.ShadowCastingMode.Off;
+
+        renderer.shadowCastingMode = UnityEngine.Rendering.ShadowCastingMode.Off;
 
         if (storeEditorInfo)
         {

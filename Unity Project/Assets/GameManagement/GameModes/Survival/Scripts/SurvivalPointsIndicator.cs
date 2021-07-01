@@ -28,13 +28,13 @@ public class SurvivalPointsIndicator : MonoBehaviour
         }
 
         pointsRecord.text = recordPoints.ToString();
-        timeRecord.text = gameMode.GetTimeString(recordTime);
+        timeRecord.text = GameModeSurvival.GetTimeString(recordTime);
     }
 
 
     void Update()
     {
-        time.text = gameMode.GetTimeString(gameMode.TimeCounter);
+        time.text = GameModeSurvival.GetTimeString(gameMode.TimeCounter);
 
         points.text = gameMode.PTS.ToString();
         multiplier.text = "x" + gameMode.PTSMultiplier.ToString();

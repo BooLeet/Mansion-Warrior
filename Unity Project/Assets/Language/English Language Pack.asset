@@ -96,6 +96,10 @@ MonoBehaviour:
       value: Bilinear
     - key: trilinear
       value: Trilinear
+    - key: settingFOV
+      value: Field of View
+    - key: settingButtonHelper
+      value: Show Button Helper
   - keyValues:
     - key: forward
       value: Forward
@@ -145,6 +149,12 @@ MonoBehaviour:
     - key: survivalNewTimeRecord
       value: New Time Record!
     - key: survivalNewScoreRecord
-      value: New ScoreRecord!
+      value: New Score Record!
+    - key: survivalHeal
+      value: Heal
+    - key: survivalHealReady
+      value: Ready
+    - key: survivalNoRecord
+      value: No Record
     - key: gameFinish
       value: Thank you for playing! Visit booleet.itch.io for more of my games!

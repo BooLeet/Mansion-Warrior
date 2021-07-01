@@ -13,6 +13,8 @@ public class SettingReferenceContainer : MonoBehaviour
     public AudioMixer musicMixer;
     public FPSCounter fPSCounter;
     public RenderResolutionScaler renderResolutionScaler;
+    public Camera mainCamera;
+    public bool applyCameraFov = true;
 
     void Awake()
     {

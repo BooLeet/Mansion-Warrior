@@ -109,6 +109,12 @@ namespace PlayerStates
             player.ApplyMovement();
             timeCounter -= Time.deltaTime;
 
+            if (player.input.GetInteract())
+                player.Interact();
+
+            if (player.input.GetSwapWeapon())
+                player.SwapWeapons();
+
             // Rotation
             player.Rotation(player.input.GetRotationInput());
 

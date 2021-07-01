@@ -7,9 +7,10 @@ public class HUD_KeyCode : MonoBehaviour
 {
     public Text text;
     public string keyName;
+    public bool showName = false;
 
     void Update()
     {
-        text.text = Localizer.LocalizeKeyCode(Settings.GetKeyCode(keyName));
+        text.text = (showName? Localizer.Localize(keyName) + " " : "") + Localizer.LocalizeKeyCode(Settings.GetKeyCode(keyName));
     }
 }

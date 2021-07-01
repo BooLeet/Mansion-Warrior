@@ -286,6 +286,7 @@ MonoBehaviour:
   musicMixer: {fileID: 24100000, guid: 2a909e91cfde89e49ac4c1d669e85d9f, type: 2}
   fPSCounter: {fileID: 1446687022961638114}
   renderResolutionScaler: {fileID: 0}
+  mainCamera: {fileID: 4239031198674413568}
 --- !u!114 &6664415196658509120
 MonoBehaviour:
   m_ObjectHideFlags: 0

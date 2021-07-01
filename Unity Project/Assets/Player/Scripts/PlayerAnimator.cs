@@ -428,7 +428,7 @@ public class PlayerAnimator : MonoBehaviour
     
     public void PlaySlamStartSound()
     {
-        Audio.PlaySFX(slamStartSound, transform.position, transform, 0.8f);
+        Audio.PlaySFX(slamStartSound, transform.position, transform, 0.5f);
     }
 
     public void PlaySlamEndSound()

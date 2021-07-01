@@ -68,7 +68,7 @@ public class KeyboardInput : PlayerInput
 
     public override bool GetInteract()
     {
-        return Input.GetKey(Settings.GetKeyCode("interact"));
+        return Input.GetKeyDown(Settings.GetKeyCode("interact"));
     }
 
 

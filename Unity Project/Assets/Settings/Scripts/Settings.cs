@@ -62,6 +62,7 @@ public class Settings
         SettingAppliers.ApplySFXVolume,
         SettingAppliers.ApplyMusicVolume,
         SettingAppliers.ApplyRenderResolutionScale,
+        SettingAppliers.ApplyFOV
     };
 
 
@@ -96,7 +97,7 @@ public class Settings
             new SettingKeyCodeValue("ability", KeyCode.V),
             new SettingKeyCodeValue("reload", KeyCode.R),
             new SettingKeyCodeValue("melee", KeyCode.Mouse1),
-            new SettingKeyCodeValue("swapWeapon", KeyCode.Alpha1),
+            new SettingKeyCodeValue("swapWeapon", KeyCode.Q),
             new SettingKeyCodeValue("interact", KeyCode.F),
             new SettingKeyCodeValue("slide", KeyCode.C),
             new SettingKeyCodeValue("jump", KeyCode.Space),
@@ -116,6 +117,7 @@ public class Settings
             new SettingFloatValue("settingSFX",0.5f),
             new SettingFloatValue("settingMusic",0.5f),
             new SettingFloatValue("settingResolutionScale",0.5f),
+            new SettingFloatValue("settingFOV",70),
             };
         return floats;
     }
@@ -131,6 +133,7 @@ public class Settings
             new SettingStringValue("settingGrain","off"),
             new SettingStringValue("settingAberration","off"),
             new SettingStringValue("settingFPSCounter","off"),
+            new SettingStringValue("settingButtonHelper","on"),
         };
         return strings;
     }

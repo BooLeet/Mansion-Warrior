@@ -44,7 +44,7 @@ MonoBehaviour:
     count: 0
   - nameKey: ammoMachineGun
     count: 30
-  interactionDistance: 4
+  interactionDistance: 8
   interactionAngle: 90
   pickupDistance: 4
   autoTargetRange: 50

@@ -106,7 +106,6 @@ public class LevelEditor : MonoBehaviour
         UpdateDashboard();
         
         currentState = new LevelEditorStates.EditingState();
-        currentState.Init(this);
 
         cameraHolder.transform.position = new Vector3(levelSize.x, levelSize.y + 2, levelSize.z) * levelScale / 2;
     }
@@ -233,15 +232,21 @@ public class LevelEditor : MonoBehaviour
     #endregion
 
     #region State Machine
-
+    bool stateInit = true;
     void StateMachine()
     {
+        if (stateInit)
+        {
+            currentState.Init(this);
+            stateInit = false;
+        }
+
         currentState.Action(this);
         LevelEditorStates.LevelEditorState nextState = currentState.Transition(this);
         if (nextState != null)
         {
+            stateInit = true;
             currentState = nextState;
-            currentState.Init(this);
         }
     }
     #endregion

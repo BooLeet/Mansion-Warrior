@@ -8,6 +8,7 @@ public class SceneNameContainer : MonoBehaviour {
     public static SceneNameContainer Instance { get; private set; }
     public string loadingSceneName = "LoadingScene";
     public string sceneName;
+    public string additionalData;
 
     void Awake()
     {

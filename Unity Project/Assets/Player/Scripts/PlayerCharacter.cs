@@ -248,14 +248,10 @@ public class PlayerCharacter : Character
             IsSprinting = false;
             Action(FireWeaponStartCallback, FireWeaponEndCallback, null, animator.GetCurrentSet().fireDuration, ActionType.Fire);
         }
-        else
+        else if (GetCurrentWeaponAmmo() + PlayerInventory.CurrentWeapon.loadedAmmo > 0)
             ReloadWeaponAction();
-        //else if(!ChangeToWeaponWithAmmo())
-        //{
-        //    hud.UIMessage(Localizer.Localize("noAmmo"), false);
-        //    PunchAction();
-        //}
-            
+        else
+            ChangeToWeaponWithAmmo();
     }
 
     public bool IsFiring()
@@ -272,7 +268,7 @@ public class PlayerCharacter : Character
 
     void FireWeaponEndCallback()
     {
-        if (GetCurrentWeaponAmmo() == 0)
+        if (GetCurrentWeaponAmmo() + PlayerInventory.CurrentWeapon.loadedAmmo == 0)
             ChangeToWeaponWithAmmo();
     }
     #endregion
@@ -501,6 +497,13 @@ public class PlayerCharacter : Character
     #region Inventory and Resources
     private bool ChangeToWeaponWithAmmo()
     {
+        if(PlayerInventory.HolsteredWeapon.loadedAmmo > 0 || PlayerInventory.GetAmmoCount(PlayerInventory.HolsteredWeapon.weapon.ammoNameKey) > 0)
+        {
+            SwapWeapons();
+            return true;
+        }
+        
+        
         //int weaponSlot = PlayerInventory.GetWeaponWithAmmo();
         //if (weaponSlot >= 0)
         //{
@@ -578,7 +581,7 @@ public class PlayerCharacter : Character
     public void AddAmmo(string ammoNameKey, uint count)
     {
         PlayerInventory.AddAmmo(ammoNameKey, count);
-        if (GetCurrentWeaponAmmo() == 0)
+        if (GetCurrentWeaponAmmo() + PlayerInventory.CurrentWeapon.loadedAmmo == 0)
             ChangeToWeaponWithAmmo();
     }
 

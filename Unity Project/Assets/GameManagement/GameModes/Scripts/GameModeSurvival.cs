@@ -10,6 +10,7 @@ public class GameModeSurvival : GameMode
     public GameObject hudElement;
     [Space]
     public LoadTestLevel levelLoader;
+    public LoadLevelFromMenu levelLoaderFromMenu;
     public AIDirector AIDirector;
     [Space]
     public GameObject regularEnemyPrefab;
@@ -141,7 +142,9 @@ public class GameModeSurvival : GameMode
 
     public string GetMapName()
     {
-        return levelLoader.levelName;
+        if(levelLoader)
+            return levelLoader.levelName;
+        return levelLoaderFromMenu.levelName;
     }
 
     public override void FailEnd()
@@ -223,7 +226,7 @@ public class GameModeSurvival : GameMode
         }
     }
 
-    public string GetTimeString(float timeCounter)
+    public static string GetTimeString(float timeCounter)
     {
         string hours = ((int)(timeCounter / 360)).ToString();
         string minutes = ((int)(timeCounter / 60) % 60).ToString();
@@ -239,7 +242,7 @@ public class GameModeSurvival : GameMode
 
     public SurvivalRecords.Record GetRecord()
     {
-        return SurvivalRecords.LoadRecords().GetRecord(levelLoader.levelName);
+        return SurvivalRecords.LoadRecords().GetRecord(GetMapName());
     }
 
     #endregion

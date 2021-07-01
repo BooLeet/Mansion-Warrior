@@ -106,7 +106,8 @@ public static class SettingAppliers
         if (SettingReferenceContainer.Instance == null)
             return true;
 
-        SettingReferenceContainer.Instance.renderResolutionScaler.ApplyResolutionScale(val);
+        if (SettingReferenceContainer.Instance.renderResolutionScaler != null)
+            SettingReferenceContainer.Instance.renderResolutionScaler.ApplyResolutionScale(val);
         return true;
     }
 
@@ -124,9 +125,23 @@ public static class SettingAppliers
         else if (val == "trilinear")
             mode = FilterMode.Trilinear;
 
-        SettingReferenceContainer.Instance.renderResolutionScaler.ApplyFilterMode(mode);
+        if(SettingReferenceContainer.Instance.renderResolutionScaler != null)
+            SettingReferenceContainer.Instance.renderResolutionScaler.ApplyFilterMode(mode);
         return true;
     }
 
     #endregion
+
+    public static bool ApplyFOV(string key, float val)
+    {
+        if (key != "settingFOV")
+            return false;
+
+        if (SettingReferenceContainer.Instance == null)
+            return true;
+
+        if(SettingReferenceContainer.Instance.applyCameraFov)
+            SettingReferenceContainer.Instance.mainCamera.fieldOfView = val;
+        return true;
+    }
 }
