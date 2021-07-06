@@ -1,0 +1,26 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c4dd444c67775e64dac7d5f79e1078e0, type: 3}
+  m_Name: GameplaySet
+  m_EditorClassIdentifier: 
+  setName: gameplay
+  objects:
+  - {fileID: 6697015344721456580, guid: 8e58551fdc1c93e43bfab9c616c7444e, type: 3}
+  - {fileID: 7588047751437171779, guid: cf8a29ac40729a947b3af856661ff6c6, type: 3}
+  - {fileID: 258508655295086924, guid: 3e2549a291e52c642bc97ed2d6103023, type: 3}
+  - {fileID: 4891129073780673965, guid: 1355612f96916f343b40a60505955007, type: 3}
+  - {fileID: 6401876779317233466, guid: 900b4cac099b44940b9c5a61c7e99bb8, type: 3}
+  - {fileID: 3709780134906789277, guid: f4f0079ff31c6e04790f7f343026e0f4, type: 3}
+  - {fileID: 9080528388476798686, guid: 1f600e61425e7fb4983b084a1034bc51, type: 3}
+  - {fileID: 1336048883274790282, guid: a00cf8f85ac0a1249ab9eaf5b5d0a4d0, type: 3}
+  - {fileID: 2629651736377442697, guid: 9d489b4e0ecba2c4ab381f98721d54b9, type: 3}
+  - {fileID: 5408053520924577794, guid: f0b0dee768cbe3742aedeba554243430, type: 3}

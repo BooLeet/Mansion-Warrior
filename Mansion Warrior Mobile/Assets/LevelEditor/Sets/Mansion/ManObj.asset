@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c4dd444c67775e64dac7d5f79e1078e0, type: 3}
+  m_Name: ManObj
+  m_EditorClassIdentifier: 
+  setName: mansion
+  objects:
+  - {fileID: 3029151038965378689, guid: 2c4a377b0de7b2343938faef4c3967df, type: 3}
+  - {fileID: 2534682588181127766, guid: 12c78fb334bd8ac47b21f6b393199d5d, type: 3}
+  - {fileID: 7704410026667567260, guid: 8119456749b1d1d4c86ee648a92508e0, type: 3}
+  - {fileID: 3232829918325861751, guid: b60cc87cf41df6c49a84c312fec865ae, type: 3}
+  - {fileID: 1846263808728334874, guid: cfeadaf2eb3e3704589f9d31fd3f9383, type: 3}
+  - {fileID: 7058897976925211114, guid: 87f499a9fe5723d4282c98a6082c828e, type: 3}
+  - {fileID: 7552645984754918351, guid: f8159f3c1318e2e40808434586baf924, type: 3}
+  - {fileID: 3222224776574001508, guid: 38b28cc0547c4ba4487fbd251fcd0db2, type: 3}
+  - {fileID: 8134636709557227304, guid: 53f49a785753bcf4889f5bdb4167f106, type: 3}

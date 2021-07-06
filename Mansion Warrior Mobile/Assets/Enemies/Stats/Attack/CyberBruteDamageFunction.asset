@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4715ff2c897a08b4bb9b4361ef4bcdc5, type: 3}
+  m_Name: CyberBruteDamageFunction
+  m_EditorClassIdentifier: 
+  speed: 60
+  radius: 0.5
+  graphic: {fileID: 8695431941489203344, guid: ca644e8dd95e52943834317f8504d56e, type: 3}
+  hitEffect: {fileID: 9173523923258285970, guid: 8695356debf430a47a34c0f766388839,
+    type: 3}
+  projectileLayer: 18

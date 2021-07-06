@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 20e6ee5bc3a6dea43b5ff437b210c58a, type: 3}
+  m_Name: ManMatSet
+  m_EditorClassIdentifier: 
+  setName: mansion
+  materials:
+  - {fileID: 2100000, guid: 8beb56cbd746fba43a94360c15ab664c, type: 2}
+  - {fileID: 2100000, guid: a28ae8e698be0d24a9728c9f4d4651c9, type: 2}
+  - {fileID: 2100000, guid: 9150dc8c34986bf43a7fc83da0d56d97, type: 2}
+  - {fileID: 2100000, guid: 3356d597b28ab4a45a969b969bd4a3d2, type: 2}
+  - {fileID: 2100000, guid: 7cd56aa6d0115a94ea72fa23ea7d3c05, type: 2}

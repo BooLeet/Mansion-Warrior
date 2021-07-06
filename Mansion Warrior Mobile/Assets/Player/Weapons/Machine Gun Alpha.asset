@@ -1,0 +1,30 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ab1faab74b984574fa508c95cb241124, type: 3}
+  m_Name: Machine Gun Alpha
+  m_EditorClassIdentifier: 
+  damageFunction: {fileID: 11400000, guid: 05695f2bb73c91b449365c6c8edbadb1, type: 2}
+  damage: 4
+  fullAuto: 1
+  type: 1
+  rightPrefab: {fileID: 3790138443795972730, guid: d5fdcd66b94c40748955cf75ebe080fe,
+    type: 3}
+  leftPrefab: {fileID: 0}
+  recoilDuration: 0.1
+  recoilStrength: 50
+  recoilAngle: 0.5
+  spreadAngle: 0
+  spreadRecoilMultiplier: 0
+  ammoNameKey: ammoMachineGun
+  ammoPerShot: 1
+  magazineSize: 30
+  bulletsPerReload: 30

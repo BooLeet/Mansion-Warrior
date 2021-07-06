@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 20e6ee5bc3a6dea43b5ff437b210c58a, type: 3}
+  m_Name: Joke
+  m_EditorClassIdentifier: 
+  setName: joke
+  materials:
+  - {fileID: 2100000, guid: 3f07b6bb0fd2db04fa76d1fcea1f149f, type: 2}
+  - {fileID: 2100000, guid: 1fe195099fc65bf4784ecebebe1d7398, type: 2}
+  - {fileID: 2100000, guid: d5f0b3c8a5d1038409189a72f654e43e, type: 2}

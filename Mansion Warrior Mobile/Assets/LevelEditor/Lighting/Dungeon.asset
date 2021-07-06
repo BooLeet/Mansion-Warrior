@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c68ebcff6bc833f43823654754953b57, type: 3}
+  m_Name: Dungeon
+  m_EditorClassIdentifier: 
+  skyboxMaterial: {fileID: 2100000, guid: b5598d8bdb98aff47ab843ece30b4dbc, type: 2}
+  skyColor: {r: 0, g: 0, b: 0, a: 1}
+  equatorColor: {r: 0, g: 0, b: 0, a: 1}
+  groundColor: {r: 0, g: 0, b: 0, a: 1}
+  singleColor: 1
+  fullColor: {r: 0.3679245, g: 0.3679245, b: 0.3679245, a: 1}
+  fog: 0
+  fogColor: {r: 0, g: 0, b: 0, a: 0}
+  fogStart: 0
+  fogEnd: 50

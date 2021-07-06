@@ -1,0 +1,64 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 39e50529f0aeb914fbc6c0f9e7ead9c6, type: 3}
+  m_Name: PlayerStats
+  m_EditorClassIdentifier: 
+  maxHealth: 100
+  selfDamageMultiplier: 1
+  moveSpeed: 15
+  jumpVelocity: 15
+  gravityModifier: 6
+  jumpVelocityRecoveryTime: 0.8
+  sprintSpeedMultiplier: 1.4
+  inAirSpeed: 2
+  inertiaResistanceStrength: 1
+  slideSpeed: 70
+  slideDuration: 0.6
+  slideDurationRecoveryTime: 1.5
+  meleeFunction: {fileID: 11400000, guid: f7496f09467e68943a05f82b4e97ef3c, type: 2}
+  meleeDamage: 10
+  maxRecoilParameter: 5
+  recoilRecoveryParameter: 10
+  primaryWeapon: {fileID: 11400000, guid: c6c7dfee00e1552418f78c020aa3f188, type: 2}
+  secondaryWeapon: {fileID: 0}
+  ammoCaps:
+  - nameKey: ammoPistol
+    count: 60
+  - nameKey: ammoShotgun
+    count: 27
+  - nameKey: ammoMachineGun
+    count: 300
+  startingAmmo:
+  - nameKey: ammoPistol
+    count: 50
+  - nameKey: ammoShotgun
+    count: 0
+  - nameKey: ammoMachineGun
+    count: 60
+  interactionDistance: 16
+  interactionAngle: 90
+  pickupDistance: 4
+  autoTargetRange: 50
+  autoTargetAngle: 60
+  autoTargetLayerMask:
+    serializedVersion: 2
+    m_Bits: 55095
+  abilityMaxCharge: 1
+  abilityChargeFillSpeed: 0.05
+  slamLayerMask:
+    serializedVersion: 2
+    m_Bits: 259895
+  slamDamage: 100
+  slamRange: 30
+  slamAscendMovementSpeed: 10
+  slamExplosionEffect: {fileID: 4494138038543217228, guid: e9858287e26641f4a992e08f05def463,
+    type: 3}

@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c4dd444c67775e64dac7d5f79e1078e0, type: 3}
+  m_Name: HellObj
+  m_EditorClassIdentifier: 
+  setName: hell
+  objects:
+  - {fileID: 1147076347605210830, guid: 6f7ac8dfbfb902542bd17a6844878ad6, type: 3}
+  - {fileID: 5215946991103617313, guid: ae803a5c07d22ef42b8d8313416ea3a2, type: 3}
+  - {fileID: 5777491607118037417, guid: ede2fb2156c9f6a4895bbd15e6c5237e, type: 3}
+  - {fileID: 1454067862739122057, guid: 8cf8229bdf810a5458376a034c435e31, type: 3}
+  - {fileID: 6062484896429985948, guid: c778f2029ca19dd499a7b244d121a818, type: 3}
+  - {fileID: 6857258630314277147, guid: d582dbb4fc136f14b83304bf5fa220cf, type: 3}
+  - {fileID: 6277315044181205123, guid: b139e943fe72a8444b5d836b3a2aeae1, type: 3}
+  - {fileID: 1363467004099628463, guid: 1ad5d44ff81766b4c852ae4f00698a26, type: 3}

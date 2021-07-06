@@ -1,0 +1,29 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c4dd444c67775e64dac7d5f79e1078e0, type: 3}
+  m_Name: Foundry ObjSet
+  m_EditorClassIdentifier: 
+  setName: foundry
+  objects:
+  - {fileID: 6656823172937433899, guid: 8f165bfa8f8a8b34faf44a7060eed28a, type: 3}
+  - {fileID: 4948696465779242972, guid: f3f7778814fd0d949b882b6f10c8f3f9, type: 3}
+  - {fileID: 5558368399732182994, guid: eba5080f335ea6645b9c20ad19f96790, type: 3}
+  - {fileID: 4716705483510982966, guid: 6e5834701b75d29488a4e6afaa6528b6, type: 3}
+  - {fileID: 5466404220755643602, guid: 88453e8ba437d0548a58b07b599536d8, type: 3}
+  - {fileID: 3351198262054921903, guid: ecfd755755938764699954e08ea05d29, type: 3}
+  - {fileID: 4009725552008041976, guid: 5d96c5fdf2dee7f409a16d6f8365e203, type: 3}
+  - {fileID: 4039803014523654132, guid: b99d62edc2d20a54aa7eafd4cd476f88, type: 3}
+  - {fileID: 8402011093096832013, guid: c94c13ec0d0464740a59395427f5c086, type: 3}
+  - {fileID: 2940090768097727038, guid: c0536b39a883459488fcc847dbf19b89, type: 3}
+  - {fileID: 721878829933033922, guid: e21e15cf066f2b34b945cdc6326f3f72, type: 3}
+  - {fileID: 3643674572170145799, guid: 7d74ba11bbba5f447816b6ef3a54caef, type: 3}
+  - {fileID: 709587094446261622, guid: 277afe2e7eee17a48b007ca55c7831b1, type: 3}
