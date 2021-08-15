@@ -5,14 +5,19 @@ using UnityEngine;
 public class LoadLevelFromMenu : MonoBehaviour
 {
     public LevelBuilder builder;
-    public string levelName;
+    private string levelName;
 
     void Start()
     {
         if(SceneNameContainer.Instance)
         {
             levelName = SceneNameContainer.Instance.additionalData;
-            builder.BuildLevel(LevelLoader.LoadLevel(SceneNameContainer.Instance.additionalData, false), false);
+            builder.BuildLevel(LevelLoader.LoadLevel(levelName, false), false);
         }
+    }
+
+    public string GetLevelName()
+    {
+        return levelName;
     }
 }

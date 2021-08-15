@@ -134,6 +134,8 @@ public class Settings
             new SettingStringValue("settingAberration","off"),
             new SettingStringValue("settingFPSCounter","off"),
             new SettingStringValue("settingButtonHelper","on"),
+            new SettingStringValue("settingHoldSprint","on"),
+            new SettingStringValue("settingAlwaysSprint","off"),
         };
         return strings;
     }

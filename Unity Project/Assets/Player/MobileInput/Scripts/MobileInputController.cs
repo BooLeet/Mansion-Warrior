@@ -160,6 +160,10 @@ public class MobileInputController : PlayerInput
         throw new System.NotImplementedException();
     }
 
+    protected override bool HoldToSprint()
+    {
+        return false;
+    }
     public override bool GetSwapWeapon()
     {
         throw new System.NotImplementedException();

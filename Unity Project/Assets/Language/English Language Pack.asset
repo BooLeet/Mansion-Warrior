@@ -100,6 +100,10 @@ MonoBehaviour:
       value: Field of View
     - key: settingButtonHelper
       value: Show Button Helper
+    - key: settingHoldSprint
+      value: Hold Sprint
+    - key: settingAlwaysSprint
+      value: Always Sprint
   - keyValues:
     - key: forward
       value: Forward

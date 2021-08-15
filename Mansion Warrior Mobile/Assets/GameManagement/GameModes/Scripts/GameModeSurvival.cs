@@ -43,6 +43,7 @@ public class GameModeSurvival : GameMode
     public float enemySpawnStartDistance = 8;
     public float enemySpawnEndDistance = 50;
     public float enemySpawnvisibilityCheckAngle = 100;
+    private int enemiesSpawnedInCurrentFrame = 0;
 
     [Header("PTS")]
     public int PTSMultiplierMaxStage = 5;
@@ -84,7 +85,9 @@ public class GameModeSurvival : GameMode
             currentState.Init(this);
         }
 
+        enemiesSpawnedInCurrentFrame = 0;
         PTSMultiplierUpdate();
+        Debug.Log(GetCurrentEnemyCount() + " " + AIDirector.GetAICount());
     }
 
     public override bool SpawnEnemy(Vector3 position)
@@ -102,7 +105,7 @@ public class GameModeSurvival : GameMode
         cooldown = 0;
         if (player == null || !counterStarted)
             return null;
-        if (AIDirector.GetAICount() >= GetCurrentEnemyCount())
+        if (AIDirector.GetAICount() + enemiesSpawnedInCurrentFrame >= GetCurrentEnemyCount())
             return null;
 
         if (!SpawnerIsValid(spawner))
@@ -116,6 +119,7 @@ public class GameModeSurvival : GameMode
         if (TimeCounter >= hardEnemySpawnDelay)
             objToSpawn = Random.value < hardEnemySpawnProbability ? hardEnemyPrefab : objToSpawn;
 
+        enemiesSpawnedInCurrentFrame++;
         return objToSpawn;
     }
 

@@ -7,6 +7,9 @@ public class MobileInputController : PlayerInput
 {
     private float cameraSensitivityMultiplier = 100;
     public float moveInputMultiplier = 1;
+    public float rotationVerticalMultiplier = 0;
+    public bool autoTargeting = false;
+    public float cameraSmoothingParameter = 20;
     //public Canvas canvas;
     //[Space]
     public MobileInputJoy moveJoystick;
@@ -20,6 +23,7 @@ public class MobileInputController : PlayerInput
     public MobileInputCamera cameraInput;
 
     private List<MobileInputElement> elements;
+    private Vector2 cameraInputVector = Vector2.zero;
 
     private void Start()
     {
@@ -67,16 +71,12 @@ public class MobileInputController : PlayerInput
 
     public override bool GetFireWeaponFullAuto()
     {
-        //return player.AutoTargetedEntity != null;
         return fireJoystick.IsPressed;
-        //return primaryJoystick.IsPressed;
     }
 
     public override bool GetFireWeaponSemiAuto()
     {
-        //return player.AutoTargetedEntity != null;
         return fireJoystick.IsPressed;
-        //return primaryJoystick.IsPressed;
     }
 
 
@@ -87,7 +87,7 @@ public class MobileInputController : PlayerInput
 
     public override bool GetInteract()
     {
-        return interactButton.KeyDown;
+        return reloadButton.KeyDown;//interactButton.KeyDown;
     }
 
     public override bool GetJump()
@@ -97,10 +97,7 @@ public class MobileInputController : PlayerInput
 
     public override Vector2 GetMovementInput()
     {
-        Vector3 input = moveJoystick.Input * moveInputMultiplier;
-        if (input.magnitude > 1)
-            input.Normalize();
-        return input.normalized;// * Mathf.Pow(input.magnitude, 1 / 4f);
+        return moveJoystick.Input.normalized;
     }
 
     public override bool GetPunch()
@@ -112,8 +109,10 @@ public class MobileInputController : PlayerInput
     public override Vector2 GetRotationInput()
     {
         float cameraSensitivity = Settings.GetFloatValueSetting("settingMouseSensitivity").value;
-        return cameraSensitivityMultiplier * cameraSensitivity * (cameraInput.DeltaInput + fireJoystick.DeltaInput) / Screen.height;
-        //return cameraSensitivityMultiplier * cameraSensitivity * (cameraInput.DeltaInput + primaryJoystick.DeltaInput + secondaryJoystick.DeltaInput) / Screen.height;
+        Vector2 input = cameraInput.DeltaInput + fireJoystick.DeltaInput;
+        input.y *= rotationVerticalMultiplier;
+        cameraInputVector = Vector2.Lerp(cameraInputVector, input, Time.deltaTime * cameraSmoothingParameter);
+        return cameraSensitivityMultiplier * cameraSensitivity * cameraInputVector / Screen.height;
     }
 
     public override bool GetPause()
@@ -133,7 +132,7 @@ public class MobileInputController : PlayerInput
 
     public override bool AutoTargetEnabled()
     {
-        return true;
+        return autoTargeting;
     }
 
     public override bool GetReloadWeapon()
@@ -143,7 +142,7 @@ public class MobileInputController : PlayerInput
 
     protected override bool GetSprintHold()
     {
-        return true;
+        return moveJoystick.Input.magnitude > 0.5f;
     }
 
     protected override bool GetSprintPress()
@@ -153,7 +152,7 @@ public class MobileInputController : PlayerInput
 
     public override bool GetSwapWeapon()
     {
-        return false;
+        return interactButton.KeyDown;
     }
 
     public override bool GetAbility()

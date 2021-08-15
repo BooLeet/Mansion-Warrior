@@ -22,7 +22,7 @@ MonoBehaviour:
   recoilDuration: 0.1
   recoilStrength: 50
   recoilAngle: 0.5
-  spreadAngle: 0
+  spreadAngle: 5
   spreadRecoilMultiplier: 0
   ammoNameKey: ammoMachineGun
   ammoPerShot: 1

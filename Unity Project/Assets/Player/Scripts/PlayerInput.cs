@@ -5,7 +5,6 @@ using UnityEngine;
 public abstract class PlayerInput : MonoBehaviour
 {
     public PlayerCharacter player;
-    public bool holdSprint = false;
     private bool isSprinting = false;
 
     public abstract Vector2 GetRotationInput();
@@ -51,12 +50,23 @@ public abstract class PlayerInput : MonoBehaviour
 
     protected abstract bool GetSprintHold();
 
+    protected abstract bool HoldToSprint();
+
+    private bool AlwaysSprint()
+    {
+        Settings.SettingStringValue setting = Settings.GetStringValueSetting("settingAlwaysSprint");
+        return setting != null && setting.value == "on";
+    }
+
     public bool GetSprint()
     {
-        Vector2 moveInput = GetMovementInput();
+        //Vector2 moveInput = GetMovementInput();
         //bool movingForward = moveInput.magnitude > 0 && moveInput.normalized.y > 0 && Mathf.Abs(moveInput.normalized.x) < Mathf.PI / 4;
 
-        if (holdSprint)// && movingForward)
+        if (AlwaysSprint())
+            return true;
+
+        if (HoldToSprint())// && movingForward)
             isSprinting = GetSprintHold();
         else
         {

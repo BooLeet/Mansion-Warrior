@@ -112,6 +112,12 @@ public class KeyboardInput : PlayerInput
         return false;
     }
 
+    protected override bool HoldToSprint()
+    {
+        Settings.SettingStringValue setting = Settings.GetStringValueSetting("settingHoldSprint");
+        return setting != null && setting.value == "on";
+    }
+
     public override bool GetReloadWeapon()
     {
         return Input.GetKeyDown(Settings.GetKeyCode("reload"));

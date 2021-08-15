@@ -21,12 +21,11 @@ public class EnemySpawnerSurvival : MonoBehaviour
             gameMode = GameMode.Instance as GameModeSurvival;
             return;
         }
-        //isValid = false;
+
         if (cooldownTimeCounter <= 0)
         {
             GameObject enemyPrefab = gameMode.GetEnemyToSpawn(gameObject, out float cooldown);
 
-            //isValid = enemyPrefab != null;
             cooldownTimeCounter = cooldown;
             if (enemyPrefab)
             {
@@ -40,11 +39,4 @@ public class EnemySpawnerSurvival : MonoBehaviour
         cooldownTimeCounter -= Time.deltaTime;
     }
 
-    //private void OnDrawGizmos()
-    //{
-    //    Gizmos.color = Color.red;
-    //    if (isValid)
-    //        Gizmos.color = Color.green;
-    //    Gizmos.DrawCube(transform.position, Vector3.one * 2);
-    //}
 }

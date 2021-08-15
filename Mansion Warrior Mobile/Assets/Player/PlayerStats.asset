@@ -29,7 +29,7 @@ MonoBehaviour:
   maxRecoilParameter: 5
   recoilRecoveryParameter: 10
   primaryWeapon: {fileID: 11400000, guid: c6c7dfee00e1552418f78c020aa3f188, type: 2}
-  secondaryWeapon: {fileID: 0}
+  secondaryWeapon: {fileID: 11400000, guid: 9d5f351f7141fd54f8eca317d864ef33, type: 2}
   ammoCaps:
   - nameKey: ammoPistol
     count: 60
@@ -48,7 +48,7 @@ MonoBehaviour:
   interactionAngle: 90
   pickupDistance: 4
   autoTargetRange: 50
-  autoTargetAngle: 60
+  autoTargetAngle: 45
   autoTargetLayerMask:
     serializedVersion: 2
     m_Bits: 55095

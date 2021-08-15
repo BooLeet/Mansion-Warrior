@@ -2897,7 +2897,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &6031002592930181689
 RectTransform:
   m_ObjectHideFlags: 0
@@ -3456,7 +3456,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &6031002593933984082
 RectTransform:
   m_ObjectHideFlags: 0
@@ -3580,7 +3580,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 12, y: 12}
+  m_SizeDelta: {x: 6, y: 6}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &6031002594063657045
 CanvasRenderer:
@@ -3697,7 +3697,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &6031002594306301709
 RectTransform:
   m_ObjectHideFlags: 0
@@ -4218,7 +4218,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &2713558675092462126
 RectTransform:
   m_ObjectHideFlags: 0
@@ -4965,6 +4965,11 @@ PrefabInstance:
     - target: {fileID: 8828904197716355742, guid: 13626ef1172cf7046b123d874dd676d8,
         type: 3}
       propertyPath: holdSprint
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8828904197716355742, guid: 13626ef1172cf7046b123d874dd676d8,
+        type: 3}
+      propertyPath: autoTargeting
       value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []

@@ -144,7 +144,7 @@ public class GameModeSurvival : GameMode
     {
         if(levelLoader)
             return levelLoader.levelName;
-        return levelLoaderFromMenu.levelName;
+        return levelLoaderFromMenu.GetLevelName();
     }
 
     public override void FailEnd()
