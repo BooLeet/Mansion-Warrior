@@ -220,7 +220,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   builder: {fileID: 321836815}
-  levelName: 
+  menuSceneName: Menu
 --- !u!114 &321836815
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -962,7 +962,7 @@ MonoBehaviour:
   pauseBeforeStart: 5
   enemyCountTimeMultiplier: 2
   enemyCountLogMultiplier: 10
-  enemyCountOffset: 10
+  enemyCountOffset: 15
   mediumEnemySpawnDelay: 60
   mediumEnemySpawnProbability: 0.2
   hardEnemySpawnDelay: 120

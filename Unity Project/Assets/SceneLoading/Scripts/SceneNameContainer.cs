@@ -28,4 +28,10 @@ public class SceneNameContainer : MonoBehaviour {
     {
         SceneManager.LoadSceneAsync(loadingSceneName);
     }
+
+    public void LoadScene(string sceneName)
+    {
+        this.sceneName = sceneName;
+        BeginLoading();
+    }
 }

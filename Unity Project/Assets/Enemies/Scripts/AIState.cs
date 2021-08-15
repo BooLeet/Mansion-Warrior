@@ -117,6 +117,8 @@ namespace AIStates
 
         public override AIState Transition(AICharacter character)
         {
+            if (character.PlayerIsDead)
+                return new PatrolState();
             if (secondsVisible >= maxSecondsVisible) 
                 return new AlertState();
             else if (timeCounter >= character.stats.cantFindTimeThreshold)
@@ -148,7 +150,10 @@ namespace AIStates
 
         public override AIState Transition(AICharacter character)
         {
-            if(!character.PlayerIsVisible && timeCounter >= character.stats.cantFindTimeThreshold)
+            if (character.PlayerIsDead)
+                return new PatrolState();
+
+            if (!character.PlayerIsVisible && timeCounter >= character.stats.cantFindTimeThreshold)
             {
                 character.ReturnAttackToken();
                 return new PatrolState();

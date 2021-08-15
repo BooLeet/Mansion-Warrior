@@ -6,13 +6,18 @@ public class LoadLevelFromMenu : MonoBehaviour
 {
     public LevelBuilder builder;
     private string levelName;
+    public string menuSceneName = "Menu";
 
     void Start()
     {
         if(SceneNameContainer.Instance)
         {
             levelName = SceneNameContainer.Instance.additionalData;
-            builder.BuildLevel(LevelLoader.LoadLevel(levelName, false), false);
+            Level level = LevelLoader.LoadLevel(levelName, false);
+            if(level != null)
+                builder.BuildLevel(level, false);
+            else
+                SceneNameContainer.Instance.LoadScene(menuSceneName);
         }
     }
 
